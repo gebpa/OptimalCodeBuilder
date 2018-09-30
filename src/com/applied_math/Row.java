@@ -6,6 +6,13 @@ public class Row {
     private String code;
     private int lengthOfCode;
 
+    public Row(char character, double probability) {
+        this.character = character;
+        this.code="";
+        this.lengthOfCode=0;
+        this.probability=probability;
+    }
+
     public Row(char character, double probability, String code) {
         this.character = character;
         this.probability = probability;
@@ -13,13 +20,22 @@ public class Row {
         this.lengthOfCode = code.length();
     }
 
+    public void addSymbolToCode(int symbol){
+        this.code+=symbol;
+        this.lengthOfCode++;
+    }
+
     public double getProbability() {
         return probability;
     }
 
+    public int getLengthOfCode() {
+        return lengthOfCode;
+    }
+
     @Override
     public String toString() {
-        return String.format("%s %.5f %s %d",character,probability,code,lengthOfCode);
+        return String.format("%9s | %11.5f | %15s | %14d",character,probability,code,lengthOfCode);
     }
 }
 
